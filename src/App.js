@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
-import Button from './components/Button'
+import Navbar from './components/Navbar';
+import About from './views/About';
+import Home from './views/Home';
+import { Route } from 'react-router-dom'
+import Racers from './views/Racers';
 
 export default class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      count: 0,
-      randomNumber: Math.random()
+      count: 0
     }
   }
 
@@ -19,15 +22,21 @@ export default class App extends Component {
 
   render() {
     return (
+      <>
+      <Navbar />
       <div className='container'>
-        <h1>Hello {this.props.name} {this.state.randomNumber}</h1>
-        <Button step={1} incrementCount={this.handleClick}/>
-        <Button step={5} incrementCount={this.handleClick}/>
-        <Button step={10} incrementCount={this.handleClick}/>
-        <Button step={25} incrementCount={this.handleClick}/>
-        <Button step={100} incrementCount={this.handleClick}/>
-        <h6>Count is at {this.state.count}</h6>
+        <Route exact path='/'>
+          <Home count={this.state.count} handleClick={this.handleClick} name={this.props.name}/>
+        </Route>
+        <Route exact path='/about'>
+          <About />
+        </Route>
+        <Route exact path='/racers'>
+          <Racers />
+        </Route>
+
       </div>
+      </>
     )
   }
 }
