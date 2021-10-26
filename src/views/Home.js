@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Button from '../components/Button'
+import { ButtonNameChange } from '../components/ButtonNameChange'
 
 export default class Home extends Component {
     render() {
@@ -12,6 +13,8 @@ export default class Home extends Component {
                 <Button step={25} incrementCount={this.props.handleClick}/>
                 <Button step={100} incrementCount={this.props.handleClick}/>
                 <h6>Count is at {this.props.count}</h6>
+                <ButtonNameChange name={this.props.name} changeName={this.props.changeName}/>
+                
             </div>
         )
     }
