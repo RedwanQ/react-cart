@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom'
 import Navbar from './components/Navbar';
 import About from './views/About';
 import Home from './views/Home';
+import { Posts } from './views/Posts';
 import Racers from './views/Racers';
 import Users from './views/Users';
 
@@ -45,6 +46,9 @@ export default class App extends Component {
             </Route>
             <Route exact path='/users'>
                 <Users />
+            </Route>
+            <Route exact path='/posts'>
+                <Posts />
             </Route>
 
         </div>

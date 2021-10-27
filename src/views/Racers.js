@@ -12,7 +12,7 @@ export default function Racers(props){
         fetch(`http://ergast.com/api/f1/${season}/${round}/driverStandings.json`)
             .then(res => res.json())
             .then(data => setRacers(data.MRData.StandingsTable.StandingsLists[0].DriverStandings))
-    })
+    }, [season, round])
 
     const handleForm = (e) => {
         e.preventDefault();

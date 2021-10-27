@@ -18,7 +18,6 @@ export default class Button extends Component {
 
 
     render() {
-        console.log('Component Rendered')
         return (
             <div>
                 <button className='btn btn-primary' onClick={() => this.props.incrementCount(this.props.step)}>+{this.props.step}</button>
