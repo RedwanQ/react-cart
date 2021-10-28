@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import { LoggedInNav } from './LoggedInNav';
+import { LoggedOutNav } from './LoggedOutNav'
 
 export default class Navbar extends Component {
     render() {
@@ -15,24 +17,7 @@ export default class Navbar extends Component {
                         <li className="nav-item">
                         <Link className="nav-link active" aria-current="page" to="/">Home</Link>
                         </li>
-                        <li className="nav-item">
-                        <Link className="nav-link" to="/register">Register</Link>
-                        </li>
-                        <li className="nav-item">
-                        <Link className="nav-link" to="/login">Login</Link>
-                        </li>
-                        <li className="nav-item">
-                        <Link className="nav-link" to="/about">About</Link>
-                        </li>
-                        <li className="nav-item">
-                        <Link className="nav-link" to="/users">Users</Link>
-                        </li>
-                        <li className="nav-item">
-                        <Link className="nav-link" to="/racers">Racers</Link>
-                        </li>
-                        <li className="nav-item">
-                        <Link className="nav-link" to="/posts">Posts</Link>
-                        </li>
+                        {this.props.loggedIn ? <LoggedInNav /> : <LoggedOutNav />}
                     </ul>
                     </div>
                 </div>

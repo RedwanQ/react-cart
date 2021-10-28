@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import Navbar from './components/Navbar';
+import { PostDetail } from './components/PostDetail';
 import About from './views/About';
 import Home from './views/Home';
 import { Login } from './views/Login';
@@ -14,7 +15,8 @@ export default class App extends Component {
     super(props);
     this.state = {
       count: 0,
-      name: 'Brian'
+      name: 'Brian',
+      loggedIn: localStorage.getItem('token')
     };
   };
 
@@ -35,7 +37,7 @@ export default class App extends Component {
   render() {
     return (
       <>
-        <Navbar />
+        <Navbar loggedIn={this.state.loggedIn}/>
         <div className='container'>
             <Route exact path='/'>
                 <Home count={this.state.count} handleClick={this.handleClick} name={this.state.name} changeName={this.changeName}/>
@@ -52,6 +54,7 @@ export default class App extends Component {
             <Route exact path='/posts'>
                 <Posts />
             </Route>
+            <Route exact path='/posts/:id' component={PostDetail} />
             <Route exact path='/register'>
                 <Register />
             </Route>
