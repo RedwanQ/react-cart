@@ -9,7 +9,7 @@ export default class Users extends Component {
     }
 
     componentDidMount(){
-        fetch('https://kekambas-bs.herokuapp.com/kekambas')
+        fetch('http://localhost:5000/api/users')
             .then(res => res.json())
             .then(data => {
                 console.log(data)
@@ -27,7 +27,7 @@ export default class Users extends Component {
             <div>
                 <h1 className='text-center'>Users</h1>
                 <ul className='list-group'>
-                    {this.state.users.map((user, idx) => <li key={idx} className='list-group-item'>{user.first_name} {user.last_name}</li>)}
+                    {this.state.users.map((user, idx) => <li key={idx} className='list-group-item'>{user.username} - {user.email}</li>)}
                 </ul>
             </div>
         )

@@ -5,6 +5,7 @@ import About from './views/About';
 import Home from './views/Home';
 import { Posts } from './views/Posts';
 import Racers from './views/Racers';
+import Register from './views/Register';
 import Users from './views/Users';
 
 export default class App extends Component {
@@ -49,6 +50,9 @@ export default class App extends Component {
             </Route>
             <Route exact path='/posts'>
                 <Posts />
+            </Route>
+            <Route exact path='/register'>
+                <Register />
             </Route>
 
         </div>
