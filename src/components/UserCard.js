@@ -21,8 +21,8 @@ export default class UserCard extends Component {
                 <div className="card-body">
                     <h5 className="card-title">{user.username}</h5>
                     <p className="card-text">{user.email}</p>
-                    {this.props.userId == user.id ? <button className="btn btn-primary" onClick={this.handleClick}>Edit</button> : null}
-                    {this.state.isEditing ? <UserEdit user={user} /> : null}
+                    {Number(this.props.userId) === user.id ? <button className="btn btn-primary" onClick={this.handleClick}>Edit</button> : null}
+                    {this.state.isEditing ? <UserEdit user={user} updateUser={this.props.updateUser}/> : null}
                 </div>
             </div>
         )
