@@ -1,6 +1,19 @@
 import React, { Component } from 'react'
+import UserEdit from './UserEdit'
 
 export default class UserCard extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            isEditing: false
+        }
+    }
+    handleClick = () =>{
+        const newState = !this.state.isEditing;
+        this.setState({
+            isEditing: newState
+        })
+    }
     render() {
         const user = this.props.user
         return (
@@ -8,7 +21,8 @@ export default class UserCard extends Component {
                 <div className="card-body">
                     <h5 className="card-title">{user.username}</h5>
                     <p className="card-text">{user.email}</p>
-                    {this.props.userId == user.id ? <a href="/" className="btn btn-primary">Button</a> : null}    
+                    {this.props.userId == user.id ? <button className="btn btn-primary" onClick={this.handleClick}>Edit</button> : null}
+                    {this.state.isEditing ? <UserEdit user={user} /> : null}
                 </div>
             </div>
         )

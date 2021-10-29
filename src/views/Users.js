@@ -21,6 +21,18 @@ export default class Users extends Component {
         )
     }
 
+    componentDidUpdate(){
+        fetch('http://localhost:5000/api/users')
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                this.setState({
+                    users: data
+                })
+            }
+        )
+    }
+
    
 
     render() {
