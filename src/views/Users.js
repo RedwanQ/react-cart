@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import UserCard from '../components/UserCard';
 
 export default class Users extends Component {
     constructor(props){
@@ -27,7 +28,7 @@ export default class Users extends Component {
             <div>
                 <h1 className='text-center'>Users</h1>
                 <ul className='list-group'>
-                    {this.state.users.map((user, idx) => <li key={idx} className='list-group-item'>{user.username} - {user.email}</li>)}
+                    {this.state.users.map((user, idx) => <UserCard key={idx} user={user} userId={this.props.userId} />)}
                 </ul>
             </div>
         )

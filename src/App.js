@@ -18,7 +18,7 @@ export default class App extends Component {
       count: 0,
       name: 'Brian',
       loggedIn: localStorage.getItem('token'),
-      user_id: null
+      userId: localStorage.getItem('userId')
     };
   };
 
@@ -57,9 +57,10 @@ export default class App extends Component {
     }).then(res => res.json())
         .then(data => {
             localStorage.setItem('token', data['token'])
+            localStorage.setItem('userId', data['user_id'])
             this.setState({
               loggedIn: data['token'],
-              user_id: data['user_id']
+              userId: data['user_id']
             })
         })
         .catch(err => console.error(err))
@@ -80,7 +81,7 @@ export default class App extends Component {
                 <Racers />
             </Route>
             <Route exact path='/users'>
-                <Users />
+                <Users userId={this.state.userId}/>
             </Route>
             <Route exact path='/posts'>
                 <Posts />
