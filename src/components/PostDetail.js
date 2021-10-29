@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react/cjs/react.development';
+import React, { useState, useEffect } from 'react';
 
 
 export const PostDetail = (props) =>{
@@ -10,7 +9,7 @@ export const PostDetail = (props) =>{
         .then(res => res.json())
         .then(data => console.log(data))
         setPost({id: 1, title: 'Test'})
-    }, [])
+    }, [props.match.params.id])
     return (
         <div key={post.id} className="card my-3">
             <div className="card-header">

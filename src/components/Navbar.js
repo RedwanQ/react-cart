@@ -19,6 +19,14 @@ export default class Navbar extends Component {
                         </li>
                         {this.props.loggedIn ? <LoggedInNav /> : <LoggedOutNav />}
                     </ul>
+                    { this.props.loggedIn ?  
+                    <ul className="navbar-nav ms-auto">
+                        <li className="nav-item">
+                            <Link className="nav-link" to='/' onClick={this.props.logOut}>Logout</Link>
+                        </li>
+                    </ul>: 
+                    null}
+                   
                     </div>
                 </div>
             </nav>
