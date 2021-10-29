@@ -86,13 +86,14 @@ export default class App extends Component {
             <Route exact path='/posts'>
                 <Posts />
             </Route>
-            <Route exact path='/posts/:id' component={PostDetail} />
             <Route exact path='/register'>
                 <Register />
             </Route>
             <Route exact path='/login'>
                 <Login handleSubmit={this.logIn} loggedIn={this.state.loggedIn}/>
             </Route>
+
+            <Route exact path='/posts/:id' component={PostDetail}></Route>
 
         </div>
       </>
