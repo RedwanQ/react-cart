@@ -38,6 +38,22 @@ export default class UserEdit extends Component {
 
     }
 
+    deleteUser = () =>{
+        let myHeaders = new Headers();
+        myHeaders.append('Authorization', `Bearer ${localStorage.getItem('token')}`)
+
+        fetch(`http://localhost:5000/api/users/${this.props.user.id}`,{
+            method: 'DELETE',
+            headers: myHeaders
+        }).then(res => {
+            if(res.status == 204){
+                this.setState({
+                    redirect:true
+                })
+            }
+        }).catch(err => console.error(err))
+    }
+
     render() {
         const user = this.props.user
         return this.state.redirect ? <Redirect to='/users' /> :(
@@ -56,7 +72,8 @@ export default class UserEdit extends Component {
                         <label htmlFor='password'>Password</label>
                         <input type='password' className='form-control' name='password' />
                     </fieldset>
-                    <input type='submit' className='btn btn-dark' />
+                    <input type='submit' className='btn btn-dark' value='Update User' />
+                    <button className='btn btn-danger' onClick={this.deleteUser}>Delete User</button>
                 </div>
             </form>
         )
