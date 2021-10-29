@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 export const PostCard = (props) =>{
@@ -8,7 +9,9 @@ export const PostCard = (props) =>{
     return (
         <div key={post.id} className="card my-3">
             <div className="card-header">
-                {post.title}
+                <Link to={`/posts/${post.id}`}>
+                    {post.title}
+                </Link>
             </div>
             <div className="card-body">
                 <blockquote className="blockquote mb-0">
