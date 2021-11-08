@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import UserCard from '../components/UserCard';
+
 
 export default class Users extends Component {
     constructor(props){

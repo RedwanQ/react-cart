@@ -1,21 +1,21 @@
 import React, {useState, useEffect} from "react";
-import { PostCard } from "../components/PostCard";
+import { Cart } from "../components/Cart";
 
 
-export const Posts = (props) => {
-    const [posts, setPosts] = useState([]);
+export const Products = (props) => {
+    const [posts, setProducts] = useState([]);
 
     useEffect(()=>{
         console.log('Effect called')
         fetch('https://kekambas-bs.herokuapp.com/posts')
             .then(res => res.json())
-            .then(data => setPosts(data))
+            .then(data => setProducts(data))
     }, [])
 
     return (
         <div>
-            <h1>This is the Posts Page</h1>
-            {posts.map(p => <PostCard key={p.id} post={p} />)}
+            <h1>This is the Products Page</h1>
+            
         </div>
         
     )

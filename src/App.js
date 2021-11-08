@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import Navbar from './components/Navbar';
-import { PostDetail } from './components/PostDetail';
-import About from './views/About';
+import {Product} from './components/Product'
 import Home from './views/Home';
 import { Login } from './views/Login';
-import { Posts } from './views/Posts';
-import Racers from './views/Racers';
+import {Products} from './views/Products'
 import Register from './views/Register';
 import Users from './views/Users';
 
@@ -21,20 +19,6 @@ export default class App extends Component {
       userId: localStorage.getItem('userId')
     };
   };
-
-  handleClick = (step) => {
-    let newCount = this.state.count + step
-    this.setState({
-        count: newCount
-    })
-  }
-
-  changeName = (name) => {
-    //   const name = prompt('What is your name?');
-      this.setState({
-          name
-      })
-  }
 
   logOut = () =>{
     localStorage.removeItem('token');
@@ -74,17 +58,12 @@ export default class App extends Component {
             <Route exact path='/'>
                 <Home count={this.state.count} handleClick={this.handleClick} name={this.state.name} changeName={this.changeName}/>
             </Route>
-            <Route exact path='/about'>
-                <About />
-            </Route>
-            <Route exact path='/racers'>
-                <Racers />
-            </Route>
+
             <Route exact path='/users'>
                 <Users userId={this.state.userId}/>
             </Route>
-            <Route exact path='/posts'>
-                <Posts />
+            <Route exact path='/products'>
+                <Products />
             </Route>
             <Route exact path='/register'>
                 <Register />
@@ -93,7 +72,7 @@ export default class App extends Component {
                 <Login handleSubmit={this.logIn} loggedIn={this.state.loggedIn}/>
             </Route>
 
-            <Route exact path='/posts/:id' component={PostDetail}></Route>
+            <Route exact path='/products/:id' component={Product}></Route>
 
         </div>
       </>
